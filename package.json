@@ -1,0 +1,15 @@
+{
+  "name": "auto-learn",
+  "version": "1.0.0",
+  "description": "学习前端自动化构建",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "肖金",
+  "license": "ISC",
+  "dependencies": {
+    "html5-boilerplate": "0.0.1",
+    "jquery": "^1.12.4"
+  }
+}
