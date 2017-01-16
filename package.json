@@ -11,5 +11,10 @@
   "dependencies": {
     "html5-boilerplate": "0.0.1",
     "jquery": "^1.12.4"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0"
   }
 }

@@ -44,11 +44,20 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var foo = __webpack_require__(1);
-	console.log(foo.bar);
+	__webpack_require__(1);
+	__webpack_require__(3);
+	(function webpackMissingModule() { throw new Error("Cannot find module \"bundle.js\""); }());
+
 
 /***/ },
 /* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var foo = __webpack_require__(2);
+	console.log(foo.bar);
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
 	var foo = {
@@ -57,6 +66,12 @@
 
 	module.exports = foo;
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	document.write('It works.');
 
 /***/ }
 /******/ ]);
