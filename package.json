@@ -8,13 +8,8 @@
   },
   "author": "肖金",
   "license": "ISC",
-  "dependencies": {
-    "html5-boilerplate": "0.0.1",
-    "jquery": "^1.12.4"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "css-loader": "^0.26.1",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   }
 }
