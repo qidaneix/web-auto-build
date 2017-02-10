@@ -1,7 +1,7 @@
-var $ = require('jquery');
-var Greeter = require('./Greeter.js');
+import React from 'react';
+import {render} from 'react-dom';
+import Greeter from './Greeter';
 
-console.log(Greeter());
-// throw new Error('what fuck?!');
-$('#root').html(Greeter());
-//document.getElementById('root').appendChild(greeter());
+import './main.css';
+
+render(<Greeter />, document.getElementById('root'));
