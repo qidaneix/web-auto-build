@@ -51,14 +51,6 @@ const config = {
         ]
     },
 
-    devtool: 'eval-source-map',
-
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        inline: true
-    },
-
     plugins: [
         new HtmlwebpackPlugin({
             title: 'Hello World app',
@@ -76,13 +68,13 @@ const config = {
             chunks: ['mobile', 'vendors'],
             inject: 'body'
         }),
-        new HtmlwebpackPlugin({
-            title: 'hello world app'
-        }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',

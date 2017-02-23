@@ -1,0 +1,1 @@
+webpackJsonp([1],{131:function(n,o,e){var t=e(1);e(3),e(2),t(document).ready(function(){t("body").text("mobile")})}},[131]);
