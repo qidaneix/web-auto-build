@@ -1,6 +1,10 @@
-var webpack = require('webpack');
-var path = require('path');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractSass = new ExtractTextPlugin({
+    filename: '[name].[hash].css',
+});
 
 //dir path
 const rootPath = path.resolve(__dirname);
@@ -25,11 +29,15 @@ const config = {
         rules: [
             {
                 test: /\.scss$/,
-                use: [
-                    {loader: 'style-loader'},
-                    {loader: 'css-loader'},
-                    {loader: 'sass-loader'}
-                ],
+                use: extractSass.extract({
+                    use: [{
+                        loader: 'css-loader'
+                    }, {
+                        loader: 'sass-loader'
+                    }],
+                    // use style-loader in development
+                    fallback: "style-loader"
+                }),
                 include: [appPath]
             }, {
                 test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
@@ -51,7 +59,7 @@ const config = {
         ]
     },
 
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
 
     devServer: {
         historyApiFallback: true,
@@ -60,7 +68,8 @@ const config = {
     },
 
     plugins: [
-        new HtmlwebpackPlugin({
+        extractSass,
+        new HtmlWebpackPlugin({
             title: 'Hello World app',
             template: path.resolve(temPath, 'index.html'),
             filename: 'index.html',
@@ -69,15 +78,12 @@ const config = {
             //要把script插入到标签里
             inject: 'body'
         }),
-        new HtmlwebpackPlugin({
+        new HtmlWebpackPlugin({
             title: 'Hello Mobile app',
             template: path.resolve(temPath, 'mobile.html'),
             filename: 'mobile.html',
             chunks: ['mobile', 'vendors'],
             inject: 'body'
-        }),
-        new HtmlwebpackPlugin({
-            title: 'hello world app'
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -86,7 +92,7 @@ const config = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',
-            filename: 'vendors.js'
+            filename: '[name].[hash].js'
         })
     ]
 };
