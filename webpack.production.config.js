@@ -32,7 +32,8 @@ const config = {
                 test: /\.scss$/,
                 use: extractSass.extract({
                     use: [{
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                        options: { minimize: true }
                     }, {
                         loader: 'sass-loader'
                     }],
@@ -83,9 +84,7 @@ const config = {
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
         }),
-        new UglifyJSPlugin({
-
-        }),
+        new UglifyJSPlugin({}),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',
             filename: '[name].[hash].min.js'
