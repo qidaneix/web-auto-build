@@ -57,6 +57,13 @@ const config = {
                     }
                 ],
                 include: [appPath]
+            }, {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'file-loader'
+                    }
+                ]
             }
         ]
     },
