@@ -67,7 +67,8 @@ const config = {
                     {
                         loader: 'file-loader'
                     }
-                ]
+                ],
+                include: [appPath]
             }
         ]
     },

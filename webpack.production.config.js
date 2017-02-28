@@ -33,7 +33,9 @@ const config = {
                 use: extractSass.extract({
                     use: [{
                         loader: 'css-loader',
-                        options: { minimize: true }
+                        options: {
+                            minimize: true
+                        }
                     }, {
                         loader: 'sass-loader'
                     }],
