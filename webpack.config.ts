@@ -3,17 +3,46 @@ import webpack from 'webpack';
 
 const config: webpack.Configuration = {
   mode: 'development',
-  entry: './src/index.js',
+  devtool: "eval-source-map",
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bbb.js',
+    filename: 'bundle.js',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+    extensions: ['.js', '.ts'],
   },
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.[j|t]s$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'ts-loader',
+          },
+        ],
       },
     ],
   },

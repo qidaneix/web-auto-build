@@ -1,5 +1,5 @@
 import log from './log';
 
-let name = 'xiaojin';
+let name: string = 'xiaojin';
 
 log(`${name}, hello world`);
