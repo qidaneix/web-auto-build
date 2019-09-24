@@ -1,5 +1,3 @@
-import log from './log';
+import warn from './warn';
 
-let name = 'xiaojin';
-
-log(`${name}, hello world`);
+warn();

@@ -1,3 +1,2 @@
-export default (args) => {
-  console.log(args)
-};
+const one = 1;
+export default one;

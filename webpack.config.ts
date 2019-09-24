@@ -1,9 +1,11 @@
+/* eslint-env node */
+
 import path from 'path';
 import webpack from 'webpack';
 
 const config: webpack.Configuration = {
   mode: 'development',
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,7 +15,7 @@ const config: webpack.Configuration = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
-    extensions: ['.js', '.ts'],
+    extensions: [ 'js', 'ts' ],
   },
   module: {
     rules: [
