@@ -1,53 +1,57 @@
 /* eslint-env node */
 
-import path from 'path';
-import webpack from 'webpack';
+import path from "path";
+import webpack from "webpack";
 
 const config: webpack.Configuration = {
-  mode: 'development',
-  devtool: 'eval-source-map',
-  entry: './src/index.js',
+  mode: "development",
+  devtool: "eval-source-map",
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js"
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src")
     },
-    extensions: [ 'js', 'ts' ],
+    extensions: []
   },
   module: {
     rules: [
       {
-        enforce: 'pre',
+        enforce: "pre",
         test: /\.[j|t]s$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        use: [
+          {
+            loader: "eslint-loader"
+          }
+        ]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-          },
-        ],
+            loader: "babel-loader"
+          }
+        ]
       },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader"
           },
           {
-            loader: 'ts-loader',
-          },
-        ],
-      },
-    ],
-  },
+            loader: "ts-loader"
+          }
+        ]
+      }
+    ]
+  }
 };
 
 export default config;

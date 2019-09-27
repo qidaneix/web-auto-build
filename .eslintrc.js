@@ -3,23 +3,20 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
+    browser: true
   },
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   extends: [
-    'eslint:recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'plugin:@typescript-eslint/recommended',
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
   ],
   // parserOptions: {
   //   sourceType: 'module',
   // },
   rules: {
-    'import/extensions': ['warn', 'always', {
-      js: 'never',
-      ts: 'never',
-    }]
-  },
+    "import/extensions": ["error", "ignorePackages"]
+  }
 };
